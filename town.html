@@ -3,24 +3,24 @@
 	<head>
 		<meta charset="utf-8">
 		<title>LoBM - Town</title>
+		<script type="text/javascript" src="legend.js"></script>
 	</head>
 	
-	<body>
-		<div id="statistics">
+	<body onload="init()">
+		<div id="status">
 			<p>health: 0 XP: 0 lvl: 0 coins: 0</p>
 		</div>
 		<h1>Legend Of The Blue Mongoose</h1>
 		<h2>Town</h2>
-		<div id="townStory">
+		<div id="townStory" class="story">
 			<h3> Welcome hero</h3>
 			<p>
 				A long, long time ago, our sweet little town was occupied by several species. No one ever could 
 				appeace them.
 				So, if you think, you have a chance to get through it and save our town - your welcome!
 			</p>
-			<button id="exit">Exit game</button>
-			<button id="continue">Continue</button>
-			<button id="toForest">To Forest</button>
+			<input type="button" id="forest" onclick="startFighting()" value="Wander into the Forest"/>
+			<input type="button" id="store" onclick="goToStore()" value="Enter the Town Store"/>
 		</div>
 	</body>
 </html>
