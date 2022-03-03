@@ -16,11 +16,12 @@ function Hero () {
 	var name = "Hero";
 	var level = 1;
 	var healthpoints = 100;
+	var xp = 0;
 	var coins = 0;
 	var armorType = "Clothes";
 	var weaponType = "Fists";
 	
-	//getters and setters to the hero object
+	//hero: getters and setters
 	return {
 		getName : function () {
 			return name;
@@ -45,6 +46,14 @@ function Hero () {
 			if (typeof val !== "number")
 				return;
 			healthpoints = val;
+		},
+		getXp : function () {
+			return xp;
+		},
+		setXp : function (val) {
+			if (typeof val !== "number")
+				return
+			xp = val;
 		},
 		getCoins : function () {
 			return coins;
@@ -77,6 +86,23 @@ function Hero () {
 function init() {
 	//hits the hero constructor at the very beginning
 	you = new Hero();
+	updateStatusbar();
+	/*
+	localStorage.setItem("Hero", you);
+	var storedHero = localStorage.getItem("Hero");
+	alert(localStorage.getItem("Hero"));
+	*/
+}
+
+//shows the hero stats in the status bar
+function updateStatusbar () {
+	var status = document.getElementById("status");
+	status.innerHTML = "health: " + you.getHealthpoints() +
+	" | XP: " + you.getXp() +
+	" | lvl: " + you.getLevel() +
+	" | coins: " + you.getCoins() +
+	" | weapon: " + you.getWeaponType() +
+	" | armor: " + you.getArmorType();
 }
 
 function startFighting() {
