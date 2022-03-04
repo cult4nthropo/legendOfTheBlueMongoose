@@ -23,6 +23,25 @@ function Hero () {
 	
 	//hero: getters and setters
 	return {
+
+		toString : function () {
+			//iterates through the public proberties of Hero, which will be only the methods
+			var str = "{";
+			for (var property in this) {
+				//takes all the getters
+				if (property.indexOf("get") == 0) {
+					var value = this[property]()
+					if (typeof value === "string") {
+						str +=  property.substring(3) + ": \"" + (this[property]()) + "\", ";
+					} else {
+						str +=  property.substring(3) + ": " + (this[property]()) + ", ";
+					}
+				}
+			}
+			str = str.substring(0, str.length - 2) + "}";
+			
+			return str;
+		},
 		getName : function () {
 			return name;
 		},
@@ -85,12 +104,17 @@ function Hero () {
 
 function init() {
 	//hits the hero constructor at the very beginning
-	you = new Hero();
+	
+		you = new Hero();
+	
+	//localStorage.getItem(Hero, storedHero);
 	updateStatusbar();
+	
+	localStorage.setItem(Hero, you);
+	
 	/*
-	localStorage.setItem("Hero", you);
-	var storedHero = localStorage.getItem("Hero");
-	alert(localStorage.getItem("Hero"));
+	var storedHero = localStorage.getItem(Hero);
+	alert(localStorage.getItem(Hero));
 	*/
 }
 
