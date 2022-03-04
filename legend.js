@@ -18,7 +18,7 @@ function Hero () {
 	var healthpoints = 100;
 	var xp = 0;
 	var coins = 0;
-	var armorType = "Clothes";
+	var armorType = "Leather Armor";
 	var weaponType = "Fists";
 	
 	//hero: getters and setters
@@ -32,9 +32,9 @@ function Hero () {
 				if (property.indexOf("get") == 0) {
 					var value = this[property]()
 					if (typeof value === "string") {
-						str +=  property.substring(3) + ": \"" + (this[property]()) + "\", ";
+						str += "\"" + property.substring(3) + "\"" + ": \"" + (this[property]()) + "\", ";
 					} else {
-						str +=  property.substring(3) + ": " + (this[property]()) + ", ";
+						str +=  "\"" +property.substring(3) +"\"" + ": " + (this[property]()) + ", ";
 					}
 				}
 			}
@@ -61,7 +61,7 @@ function Hero () {
 		getHealthpoints : function () {
 			return healthpoints;
 		},
-		setHealtpoints : function (val) {
+		setHealthpoints : function (val) {
 			if (typeof val !== "number")
 				return;
 			healthpoints = val;
@@ -104,18 +104,27 @@ function Hero () {
 
 function init() {
 	//hits the hero constructor at the very beginning
-	
-		you = new Hero();
-	
-	//localStorage.getItem(Hero, storedHero);
+	you = new Hero();
+	var hero = localStorage.getItem("Hero", you);
+
+	if (hero) {
+		var heroObj = JSON.parse(hero);
+
+		for (var property in heroObj) {
+			var str = "";
+			var value = heroObj[property];
+			if (typeof val === "string") {
+				str += "you.set" + property + "(\"" + heroObj[property] + "\")";
+			} else {
+				str += "you.set" + property + "(" + heroObj[property] + ")";
+			}
+			console.log(str);
+			eval(str);
+		}
+	}
 	updateStatusbar();
 	
-	localStorage.setItem(Hero, you);
-	
-	/*
-	var storedHero = localStorage.getItem(Hero);
-	alert(localStorage.getItem(Hero));
-	*/
+	localStorage.setItem("Hero", you);
 }
 
 //shows the hero stats in the status bar
