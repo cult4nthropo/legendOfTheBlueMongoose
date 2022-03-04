@@ -113,12 +113,11 @@ function init() {
 		for (var property in heroObj) {
 			var str = "";
 			var value = heroObj[property];
-			if (typeof val === "string") {
-				str += "you.set" + property + "(\"" + heroObj[property] + "\")";
+			if (typeof value === "string") {
+				str += "you.set" + property + "(\"" + value + "\")";
 			} else {
-				str += "you.set" + property + "(" + heroObj[property] + ")";
+				str += "you.set" + property + "(" + value + ")";
 			}
-			console.log(str);
 			eval(str);
 		}
 	}
