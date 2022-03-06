@@ -210,24 +210,20 @@ function findEnemyToFight() {
 		if (levelProgress <= 0.15) {
 			if (enemies[i].level == (fightingLevel -1) || (enemies [i].level == fightingLevel)) {
 				enemiesToFight.push(enemies[i]);
-				console.log(enemies[i]);
 			}
 		}else if (levelProgress >= 0.85) {
 			if ((enemies[i].level == fightingLevel +1) || (enemies[i].level == fightingLevel)) {
 				enemiesToFight.push(enemies[i]);
-				console.log(enemies[i]);
 			}
 		} else {
 			if (enemies[i].level == fightingLevel) {
 				enemiesToFight.push(enemies[i]);
-				console.log(enemies[i]);
 			}
 		}
 		
 	}
 	function randomNumber(min, max) {
 		var randomEnemy = Math.floor((Math.random() * max) + min);
-		console.log(randomEnemy);
 		return randomEnemy;
 	}
 
@@ -237,9 +233,26 @@ function findEnemyToFight() {
 
 function startFighting() {
 
-	findEnemyToFight();
+	var enemy = findEnemyToFight();
+	document.getElementById("theEnemy").innerHTML = "You encountered a " + enemy.enemyType;
+	//write the stats of the enemy beneeth the hero status bar
+	var enemyHealth = enemy.healthpoints;
+	document.getElementById("enemyStatus").innerHTML = "Enemy: " + enemy.enemyType +
+		" | lvl: " + enemy.level +
+		" | health: " + enemyHealth +
+		" | armor: " + enemy.armor +
+		" | weapon: " + enemy.weapon +
+		" | loot level: " + enemy.lootLevel;
 
 }
+
+
+function attack(enemy) {
+	
+}
+//Write a function for the attacking with an initiative who starts first
+//Write a function for attacking which updates the stats of the enemy and the hero
+//Write a runaway function with a possible failure, which gives the enemy the initiative of attacking again
 
 function goToStore() {
 

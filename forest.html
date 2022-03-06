@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>LoBM - Forest</title>
+		<script type="text/javascript" src="legend.js"></script>
+	</head>
+	
+	<body onload="init(); startFighting()">
+		<div id="status">
+		</div>
+		<div id ="enemyStatus"></div>
+		<h1>Legend Of The Blue Mongoose</h1>
+		<h2>You're in the forest now.</h2>
+		<div id="forestStory" class="story">
+			<h3> Ready for battle?</h3>
+			<p id="theEnemy"></p>
+			
+			<input type="button" id="attack" onclick="attack()" value="Attack"/>
+			<input type="button" id="town" onclick="tryToRun()" value="Run away"/>
+		</div>
+	</body>
+</html>
