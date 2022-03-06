@@ -212,13 +212,13 @@ function findEnemyToFight() {
 				enemiesToFight.push(enemies[i]);
 				console.log(enemies[i]);
 			}
-		}else if (enemies[i].level >= 0.85) {
+		}else if (levelProgress >= 0.85) {
 			if ((enemies[i].level == fightingLevel +1) || (enemies[i].level == fightingLevel)) {
 				enemiesToFight.push(enemies[i]);
 				console.log(enemies[i]);
 			}
 		} else {
-			if (enemies[i] == fightingLevel) {
+			if (enemies[i].level == fightingLevel) {
 				enemiesToFight.push(enemies[i]);
 				console.log(enemies[i]);
 			}
