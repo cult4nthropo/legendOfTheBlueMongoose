@@ -182,6 +182,33 @@ function checkForLevelUpProgress () {
 	return nextLevelProgress;
 }
 
+//finds an enemy that matches your current level
+function findEnemyToFight() {
+	var fightingLevel = you.getLevel();
+	var levelProgress = checkForLevelUpProgress();
+	var enemiesToFight = [];
+	 if (levelProgress >= 0.85) {
+		 fightingLevel +=1;
+	 }
+
+	for(var i = 0; i < enemies.length; i++) {
+		
+		if (enemies[i].level <= fightingLevel) {
+			enemiesToFight.push(enemies[i]);
+		}
+	}
+	console.log(enemiesToFight.length);
+	function randomNumber(min, max) {
+		var randomEnemy = Math.floor((Math.random() * max) + min);
+		console.log(randomEnemy);
+		return randomEnemy;
+	}
+
+	var enemyToFight = enemiesToFight[randomNumber(0, (enemiesToFight.length))];
+	console.log(enemyToFight);
+	return enemyToFight;
+}
+
 function startFighting() {
 	/**
 	 * Choose an enemy that matches your current level
@@ -193,23 +220,7 @@ function startFighting() {
 	 * 3. Chose a random anemy from this array
 	 * 4. write the enemy with status bar and specific story in the document
 	 */
-
-	var fightingLevel = you.getLevel();
-	console.log(fightingLevel);
-	var levelProgress = checkForLevelUpProgress();
-	var enemiesToFight = [];
-	 if (levelProgress >= 0.85) {
-		 fightingLevel +=1;
-	 }
-
-	for(var i = 0; i < enemies.length; i++) {
-		
-		if (enemies[i].level <= fightingLevel) {
-			console.log(enemies[i].level)
-			enemiesToFight.push(enemies[i]);
-		}
-	}
-	console.log(enemiesToFight);
+	findEnemyToFight();
 	
 }
 
